@@ -1,126 +1,449 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
- <head>
-  <meta charset="UTF-8">
-  <meta name="Description" content="R de responsabilidad. R de revolución. R de rescate. R de rueditas. R de risas. Queremos cambiar el mundo, pero aplicamos la máxima 'piensa en el mundo actua localmente'. ">
-  <title>Santuario Pepis</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700&family=Open+Sans:wght@600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./css/css.css">
-  <script src="./js/js.js"></script>
- </head>
- <body>
- <div class="mainPage">
+<head>
+    <meta charset="UTF-8">
+    <title>Terra e Vida: A Muller no Rural Galego</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #fafafa;
+            color: #222;
+        }
+        .hero-header {
+            position: relative;
+            width: 100vw;
+            min-height: 630px;
+            background: url('portada1.jpg') center center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        .hero-header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.6) 100%);
+            z-index: 1;
+        }
+        .hero-title {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            font-size: 2.8em;
+            font-weight: bold;
+            text-shadow: 0 3px 15px #000a;
+            margin: 0;
+        }
+        .expandable-blocks {
+            width: 100vw;
+            max-width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            margin: 0 auto;
+            margin-top: 0;
+        }
+        .expandable {
+            width: 100vw;
+            max-width: 100vw;
+            background: #fff;
+            border-radius: 0;
+            box-shadow: 0 2px 18px #0002;
+            overflow: hidden;
+            margin: 0;
+            border-top: 1px solid #e6e6e6;
+        }
+        .expandable:first-child {
+            border-top: none;
+        }
+        .expandable-btn {
+            width: 100%;
+            border: none;
+            background: var(--color-acento, #bc4800);
+            color: #fff;
+            font-size: 1.24em;
+            padding: 28px 0 28px 26px;
+            cursor: pointer;
+            text-align: left;
+            font-weight: bold;
+            outline: none;
+            position: relative;
+            letter-spacing: 0.5px;
+            transition: background .2s;
+        }
+        .expandable-btn::after {
+            content: '\25BC';
+            position: absolute;
+            right: 32px;
+            top: 50%;
+            transform: translateY(-50%) rotate(0deg);
+            transition: transform .2s;
+            font-size: 1.1em;
+        }
+        .expandable.open .expandable-btn::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        .expandable-content {
+            display: none;
+            padding: 28px 34px 32px 34px;
+            background: #f8f8fc;
+            font-size: 1.09em;
+        }
+        .expandable.open .expandable-content {
+            display: block;
+        }
+        .audio-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .audio-list li {
+            margin: 0 0 22px 0;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .audio-btn {
+            background: #0071bc;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background .2s;
+        }
+        .audio-btn:hover {
+            background: #00588e;
+        }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-title { font-size: 2em; }
+            .expandable-content { padding: 20px 10px 20px 14px; }
+            .expandable-btn { font-size: 1em; padding-left: 12px; }
+        }
+        @media (max-width: 600px) {
+            .hero-header { min-height: 170px; }
+            .hero-title { font-size: 1.2em; }
+            .audio-btn { width: 38px; height: 38px; }
+        }
 
 
-<div class='content-wrapper'>
-    <div class='logoMenu'>
-        <a href='https://www.santuariopepis.org' itemprop='url' title='Home'><img src="./img/logo.png" alt="logo de Santuario Pepis" class="imgLogo" />
-        <span itemprop='name'>&nbsp;&nbsp;&nbsp;Santuario Pepis</span></a>          
+        .audio-card {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px #0001;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    position: relative;
+}
+.audio-cover {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 22px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: box-shadow .2s;
+}
+.audio-cover:hover {
+    box-shadow: 0 2px 16px #0003;
+    opacity: 0.9;
+}
+.audio-info {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.audio-title {
+    font-size: 1.18em;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 5px;
+}
+.audio-author {
+    font-size: 1em;
+    color: #555;
+    margin: 2px 0 8px 0;
+}
+.audio-meta {
+    display: flex;
+    align-items: center;
+    color: #777;
+    font-size: 0.98em;
+    gap: 7px;
+    margin-top: 6px;
+}
+.audio-icon {
+    font-size: 1.11em;
+    opacity: 0.8;
+}
+.audio-duration {
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+.audio-card-btn {
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 18px;
+    transition: background .2s;
+    position: relative;
+    z-index: 2;
+}
+.audio-card-btn:hover { background: #333; }
+@media (max-width:600px) {
+    .audio-card { flex-direction: column; align-items: flex-start; }
+    .audio-cover { margin: 0 0 10px 0; }
+    .audio-card-btn { margin: 10px 0 0 0; }
+}
+/* MODAL DE IMAGEN */
+.img-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    background: rgba(22,22,22,0.88);
+    justify-content: center;
+    align-items: center;
+    transition: opacity .2s;
+    cursor: zoom-out;
+}
+.img-modal.show {
+    display: flex;
+}
+.img-modal img {
+    max-width: 92vw;
+    max-height: 90vh;
+    border-radius: 16px;
+    box-shadow: 0 8px 60px #0008;
+    background: #fff;
+}
+
+.audio-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+.audio-card-btn {
+    margin: 0 8px 0 2px;
+}
+    </style>
+</head>
+<body>
+    <div class="hero-header">
+        <h1 class="hero-title">Terra e Vida: A Muller no Rural Galego</h1>
     </div>
-   <div class='navmenu'>
-
-   <span id='menu'><img src="./img/logo.png" alt="logo de Santuario Pepis" class="imgLogo" /><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAC9JREFUeNpi/P//PwM1AQsQU9VEJgYqg8FvICgMGUeel0eTzWiyGU02Qz/ZAAQYAOPcBjEdYroKAAAAAElFTkSuQmCC' onclick="menuClick()" /></span>
-      
-      <nav id='navbar' itemprop='mainEntity' itemscope='itemscope' itemtype='https://schema.org/SiteNavigationElement'>      
-         <ul class='navbar'> 
-         <li><a href="./santuario"  itemprop='url' title="Santuario" ><span itemprop='name'>Santuario</a></span></li>
-         <li><a href="./editorial"   itemprop='url' title="Editorial" ><span itemprop='name'>Editorial</a></span></li>    
-         </ul>
-      </nav>
-   </div>
-</div>
-<div style='clear: both;'/>
-
-<div class="block">
-
-<div class="half centered">
-  
-        <div class="slogan">Cambiar el mundo.. <span class="sloganSpace"></span>..cambiandote a ti mismo.</div>
-  
-</div>
-<div class="half">
-    <div class="mainImageContainer centered">
-        <img class='responsiveImage borders' src="./img/world.gif" >
+    <div class="expandable-blocks">
+        <!-- Botón Descripción -->
+        <div class="expandable">
+            <button class="expandable-btn">Descripción</button>
+            <div class="expandable-content">
+                <p>
+                    <b>Artista/s participantes: </b> <a href="https://www.instagram.com/kiakurita/" target="_blank" style="text-decoration: none;">Kia Kurita</a><br>                    
+                    <b>Tipo de proposta: </b> Fotografía<br>
+                    <b>Duración: </b> Mostra<br>    <br/>           
+                    <b>Descrición da túa proposta para o público: </b> 
+                    <br/>
+                    Esta mostra é unha homenaxe á muller galega no mundo rural, gardiá da terra, da tradición e 
+da identidade. A través das imaxes, captúrase a súa forza, resiliencia e conexión coa natureza, 
+visibilizando o seu papel fundamental na cultura e na sociedade galega.
+    <br/><br/>
+<b>Descrición da artista/s:  </b> 
+                    Como muller e fotógrafa contemporánea, atopo na imaxe unha forma de reivindicación e 
+expresión persoal. Nacida en Guadalajara, México, e residente en Drados, a miña formación 
+en Bioloxía e Medios de Artes Visuais ensinoume a observar o mundo con curiosidade e 
+sensibilidade. A través da fotografía, exploro a relación entre o corpo, a natureza e a 
+memoria, capturando a esencia das cores, formas e sons que constrúen a miña visión 
+artística e emocional. 
+<br/><br/>
+     <b>Instagram:</b> <a href="https://www.instagram.com/kiakurita/" target="_blank"  style="text-decoration: none;">@kiakurita</a><br>
+                        <div style="display: flex; align-items: center; margin: 8px 0;">
+        <b style="margin-right: 10px;">Codigo QR seguimiento:</b>
+        <img src="qrInstagram.jpg" height="300" width="300" alt="QR Instagram" style="display:block;" />
+    </div>
+                </p>
+            </div>
+        </div>
+        <!-- Botón Contenidos -->
+        <div class="expandable">
+            <button class="expandable-btn">Contenidos de visita</button>
+            <div class="expandable-content">
+<div class="audio-card">
+    <img class="audio-cover" src="foto1.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
+    <div class="audio-info">
+        <div class="audio-title">Pepa de Outeiro</div>
+        <div class="audio-author"><b>Audio español:</b> Aida Jimenez</div>
+        <div class="audio-author"><b>Audio galego:</b>  Raquel Pérez Dieguez</div>        
+        <div class="audio-buttons">
+            <span>Castellano:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiocastellano1')">&#9654;</button>
+            <audio id="audiocastellano1" src="audiocastellano1.mp3"></audio>
+            <span style="margin-left:18px;">Galego:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiogallego1')">&#9654;</button>
+            <audio id="audiogallego1" src="audiogallego1.mp3"></audio>
+        </div>
     </div>
 </div>
 
-<div class="clear"></div>
-</div>
-<div class="clear"></div>
 
+<div class="audio-card">
+    <img class="audio-cover" src="foto2.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
+    <div class="audio-info">
+        <div class="audio-title">Sinda de Acevedo</div>
+        <div class="audio-author"><b>Audio español:</b> Aida Jimenez</div>
+        <div class="audio-author"><b>Audio galego:</b>  Raquel Pérez Dieguez</div>        
+        <div class="audio-buttons">
+            <span>Castellano:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiocastellano2')">&#9654;</button>
+            <audio id="audiocastellano2" src="audiocastellano2.mp3"></audio>
+            <span style="margin-left:18px;">Galego:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiogallego2')">&#9654;</button>
+            <audio id="audiogallego2" src="audiogallego2.mp3"></audio>
+        </div>
+    </div>
 </div>
 
-<div class="block backWhite">
-<div class="half padding50 centered">
-     <img class='responsiveImageType1 borders right' src="./img/perros.jpg" >
+
+<div class="audio-card">
+    <img class="audio-cover" src="foto3.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
+    <div class="audio-info">
+        <div class="audio-title">Lola de Acevedo</div>
+        <div class="audio-author"><b>Audio español:</b> Aida Jimenez</div>
+        <div class="audio-author"><b>Audio galego:</b>  Raquel Pérez Dieguez</div>        
+        <div class="audio-buttons">
+            <span>Castellano:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiocastellano3')">&#9654;</button>
+            <audio id="audiocastellano3" src="audiocastellano3.mp3"></audio>
+            <span style="margin-left:18px;">Galego:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiogallego3')">&#9654;</button>
+            <audio id="audiogallego3" src="audiogallego3.mp3"></audio>
+        </div>
+    </div>
 </div>
-<div class="half padding50">
-<h3>¿Qué es Santuario Pepis?</h3>
-        <p>Somos un grupo de personas (y animales) que queremos cambiar el mundo. Nada nuevo por aquí, 
-            en mayor o menor medida se que somos muchas las personas con este deseo. Obviamente una cosa
-            es desear o fantasear y otra cosa es llevarlo a cabo. 
-        </p>
-        <p> 
-            <blockquote>Piensa a nivel global pero actua localmente.</blockquote>
-        </p>
         
-      
-</div>
-
-<div class="clear"></div>
-</div>
 
 
-<div class="block backWhite">
-<div class="half padding50 centered">
-     <img class='responsiveImageType1 borders right' src="./img/hands.jpg" >
-</div>
-<div class="half padding50">
-<h3>Organización tribal</h3>
-        <p>El concepto de tribu como forma de organización frente a la familia tradicional. En la tribu, todos somos familia con independencia de si hay o no vinculos de sangre. Todos cuidamos de todos. Todos cooperamos por el bien de la tribu y somos responsables por el resto de los integrantes. 
-        </p>
-        <p> 
-            <blockquote>La tribu es la familia que uno elige.</blockquote>
-        </p>
-        
-</div>
-
-<div class="clear"></div>
 </div>
 
 
+            </div>
 
-
-
-<div class="block backWhite">
-<div class="half padding50 centered">
-     <img class='responsiveImageType1 borders right' src="./img/santuPepi.jpg" >
-</div>
-<div class="half padding50">
-<h3>Santuario</h3>
-        <p>Queremos cuidar de nuestro hermanos animales. En el santuario rescataremos y cuidaremos de nuestros hermanitos, protegiendolos y dandoles el amor que se merecen. 
-        </p>
-        <p> 
-            <blockquote>La grandeza de una nación y su progreso moral puede ser juzgado por la forma en que sus animales son tratados.</blockquote>- Ghandi
-        </p>
-        <a class="coolLink" href="./santuario">Visita el santuario</a>
-</div>
-
-<div class="clear"></div>
-</div>
-
-
-
+             <div class="expandable">
+            <button class="expandable-btn">Material adicional</button>
+            <div class="expandable-content">
+<div class="audio-card">
+    <img class="audio-cover" src="foto1materialadicionalf.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
+    <div class="audio-info">
+        <div class="audio-title"> Hablando con Pepa</div>
+        <div class="audio-author"><b>Conversación abierta</b> </div>        
+        <div class="audio-buttons">
+            <button class="audio-card-btn" onclick="playAudio('materialadicional1')">&#9654;</button>
+            <audio id="materialadicional1" src="materialadicional1.mp3"></audio>        
+        </div>
     </div>
-    
+</div>
 
 
+<div class="audio-card">
+    <img class="audio-cover" src="foto2materialadicional.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
+    <div class="audio-info">
+        <div class="audio-title">Hablando con Sinda</div>
+        <div class="audio-author"><b>Conversación abierta</b> </div>        
+        <div class="audio-buttons">          
+            <button class="audio-card-btn" onclick="playAudio('materialadicional2')">&#9654;</button>
+            <audio id="materialadicional2" src="materialadicional2.mp3"></audio>       
+        </div>
+    </div>
+</div>
 
 
- </body>
+<div class="audio-card">
+    <img class="audio-cover" src="foto3materialadicional.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
+    <div class="audio-info">
+        <div class="audio-title">Hablando Lola</div>
+        <div class="audio-author"><b>Conversación abierta</b> </div>      
+        <div class="audio-buttons">            
+            <button class="audio-card-btn" onclick="playAudio('materialadicional3')">&#9654;</button>
+            <audio id="materialadicional3" src="materialadicional3.mp3"></audio>  
+        </div>
+    </div>
+</div>
+        
+
+
+</div>
+
+
+            </div>
+        </div>
+        <!-- Modal de imagen -->
+<div id="img-modal" class="img-modal" onclick="closeImageModal()">
+    <img id="img-modal-content" src="" alt="Portada grande">
+</div>
+    </div>
+    <script>
+
+        function showImageModal(img) {
+    var modal = document.getElementById("img-modal");
+    var modalImg = document.getElementById("img-modal-content");
+    modalImg.src = img.src.replace('w=65', 'w=1200'); // Si tienes imagen grande, mejor usa un src diferente.
+    modal.classList.add("show");
+}
+function closeImageModal() {
+    document.getElementById("img-modal").classList.remove("show");
+}
+
+        // Acordeón expandible
+        document.querySelectorAll('.expandable-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+                const parent = btn.parentElement;
+                parent.classList.toggle('open');
+            });
+        });
+
+        // Audio: solo permite reproducir uno a la vez
+        function playAudio(id) {
+            document.querySelectorAll('audio').forEach(function(audio) {
+                if(audio.id !== id) audio.pause();
+            });
+            var audio = document.getElementById(id);
+            if(audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+</body>
 </html>
