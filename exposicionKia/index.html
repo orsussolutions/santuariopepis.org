@@ -16,7 +16,7 @@
             position: relative;
             width: 100vw;
             min-height: 630px;
-            background: url('header.jpg') center center/cover no-repeat;
+            background: url('portada1.jpg') center center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -150,8 +150,8 @@
     position: relative;
 }
 .audio-cover {
-    width: 65px;
-    height: 65px;
+    width: 120px;
+    height: 120px;
     border-radius: 8px;
     object-fit: cover;
     margin-right: 22px;
@@ -173,6 +173,7 @@
     font-size: 1.18em;
     font-weight: bold;
     color: #222;
+    margin-bottom: 5px;
 }
 .audio-author {
     font-size: 1em;
@@ -240,6 +241,17 @@
     box-shadow: 0 8px 60px #0008;
     background: #fff;
 }
+
+.audio-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+.audio-card-btn {
+    margin: 0 8px 0 2px;
+}
     </style>
 </head>
 <body>
@@ -252,249 +264,166 @@
             <button class="expandable-btn">Descripción</button>
             <div class="expandable-content">
                 <p>
-                    <b>Artista: </b> <a href="https://www.instagram.com/kiakurita/" target="_blank">Kia Kurita</a><br>                    
-                    <b>Fecha: </b> 2025<br>
-                    <b>Instagram:</b> @kiakurita<br>
+                    <b>Artista/s participantes: </b> <a href="https://www.instagram.com/kiakurita/" target="_blank" style="text-decoration: none;">Kia Kurita</a><br>                    
+                    <b>Tipo de proposta: </b> Fotografía<br>
+                    <b>Duración: </b> Mostra<br>    <br/>           
+                    <b>Descrición da túa proposta para o público: </b> 
+                    <br/>
+                    Esta mostra é unha homenaxe á muller galega no mundo rural, gardiá da terra, da tradición e 
+da identidade. A través das imaxes, captúrase a súa forza, resiliencia e conexión coa natureza, 
+visibilizando o seu papel fundamental na cultura e na sociedade galega.
+    <br/><br/>
+<b>Descrición da artista/s:  </b> 
+                    Como muller e fotógrafa contemporánea, atopo na imaxe unha forma de reivindicación e 
+expresión persoal. Nacida en Guadalajara, México, e residente en Drados, a miña formación 
+en Bioloxía e Medios de Artes Visuais ensinoume a observar o mundo con curiosidade e 
+sensibilidade. A través da fotografía, exploro a relación entre o corpo, a natureza e a 
+memoria, capturando a esencia das cores, formas e sons que constrúen a miña visión 
+artística e emocional. 
+<br/><br/>
+     <b>Instagram:</b> <a href="https://www.instagram.com/kiakurita/" target="_blank"  style="text-decoration: none;">@kiakurita</a><br>
                         <div style="display: flex; align-items: center; margin: 8px 0;">
         <b style="margin-right: 10px;">Codigo QR seguimiento:</b>
         <img src="qrInstagram.jpg" height="300" width="300" alt="QR Instagram" style="display:block;" />
     </div>
-                    <b>Descripción:</b> Esta exposición es un homenaje a la mujer rural gallega, explorando su conexión con la tierra y la vida cotidiana. A través de una serie de obras que combinan fotografía, pintura y elementos multimedia, Kia Kurita invita al espectador a reflexionar sobre el papel fundamental de la mujer en el ámbito rural, destacando su fuerza, resiliencia y creatividad.
-                    La muestra incluye retratos íntimos de mujeres trabajadoras, paisajes rurales vibrantes y elementos interactivos que permiten al público experimentar la vida en el campo desde una perspectiva femenina. Con un enfoque poético y sensible, la exposición busca visibilizar las historias de estas mujeres, muchas veces invisibilizadas en la narrativa cultural.
-                    La obra de Kurita se caracteriza por su atención al detalle y su capacidad para capturar la esencia de sus sujetos. Utilizando técnicas mixtas, combina la fotografía con la pintura y el collage, creando piezas que son tanto visualmente impactantes como emocionalmente resonantes.
-                    La exposición no solo celebra la vida de las mujeres en el campo, sino que también invita a una reflexión más amplia sobre la relación entre género, trabajo y medio ambiente. A través de su arte, Kurita busca empoderar a las mujeres rurales y dar voz a sus historias, destacando su papel crucial en la sostenibilidad de las comunidades rurales.
-                    <b>Colaboradores:</b> Esta exposición cuenta con la colaboración de diversas asociaciones   y colectivos que trabajan en la defensa de los derechos de las mujeres rurales, así como con el apoyo de instituciones culturales locales. Además, se realizarán talleres y charlas durante la exposición para fomentar el diálogo sobre estos temas.                    
-                    
                 </p>
             </div>
         </div>
         <!-- Botón Contenidos -->
         <div class="expandable">
-            <button class="expandable-btn">Contenidos</button>
+            <button class="expandable-btn">Contenidos de visita</button>
             <div class="expandable-content">
-    <div class="audio-card">
-        <img class="audio-cover" src="foto1.jpg" 
-         alt="Portada" onclick="showImageModal(this)">
-        <div class="audio-info">
-            <div class="audio-title">Suspensión I</div>
-            <div class="audio-author">Adrián Balseca</div>
-            <div class="audio-meta">
-                <span class="audio-icon">&#127911;</span>
-                <span class="audio-duration">01:20</span>
-            </div>
+<div class="audio-card">
+    <img class="audio-cover" src="foto1.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
+    <div class="audio-info">
+        <div class="audio-title">Pepa de Outeiro</div>
+        <div class="audio-author"><b>Audio español:</b> Aida Jimenez</div>
+        <div class="audio-author"><b>Audio galego:</b>  Raquel Pérez Dieguez</div>        
+        <div class="audio-buttons">
+            <span>Castellano:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiocastellano1')">&#9654;</button>
+            <audio id="audiocastellano1" src="audiocastellano1.mp3"></audio>
+            <span style="margin-left:18px;">Galego:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiogallego1')">&#9654;</button>
+            <audio id="audiogallego1" src="audiogallego1.mp3"></audio>
         </div>
-        <button class="audio-card-btn" onclick="playAudio('audio1')">&#9654;</button>
-        <audio id="audio1" src="audio1.mp3"></audio>
     </div>
+</div>
+
+
+<div class="audio-card">
+    <img class="audio-cover" src="foto2.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
+    <div class="audio-info">
+        <div class="audio-title">Sinda de Acevedo</div>
+        <div class="audio-author"><b>Audio español:</b> Aida Jimenez</div>
+        <div class="audio-author"><b>Audio galego:</b>  Raquel Pérez Dieguez</div>        
+        <div class="audio-buttons">
+            <span>Castellano:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiocastellano2')">&#9654;</button>
+            <audio id="audiocastellano2" src="audiocastellano2.mp3"></audio>
+            <span style="margin-left:18px;">Galego:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiogallego2')">&#9654;</button>
+            <audio id="audiogallego2" src="audiogallego2.mp3"></audio>
+        </div>
+    </div>
+</div>
+
+
+<div class="audio-card">
+    <img class="audio-cover" src="foto3.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
+    <div class="audio-info">
+        <div class="audio-title">Lola de Acevedo</div>
+        <div class="audio-author"><b>Audio español:</b> Aida Jimenez</div>
+        <div class="audio-author"><b>Audio galego:</b>  Raquel Pérez Dieguez</div>        
+        <div class="audio-buttons">
+            <span>Castellano:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiocastellano3')">&#9654;</button>
+            <audio id="audiocastellano3" src="audiocastellano3.mp3"></audio>
+            <span style="margin-left:18px;">Galego:</span>
+            <button class="audio-card-btn" onclick="playAudio('audiogallego3')">&#9654;</button>
+            <audio id="audiogallego3" src="audiogallego3.mp3"></audio>
+        </div>
+    </div>
+</div>
         
 
-    <div class="audio-card">
-    <img class="audio-cover" src="foto2.jpg" 
-         alt="Portada" onclick="showImageModal(this)">
+
+</div>
+
+
+            </div>
+
+             <div class="expandable">
+            <button class="expandable-btn">Material adicional</button>
+            <div class="expandable-content">
+<div class="audio-card">
+    <img class="audio-cover" src="foto1materialadicionalf.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
     <div class="audio-info">
-        <div class="audio-title">Suspensión I</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">01:20</span>
+        <div class="audio-title"> Hablando con Pepa</div>
+        <div class="audio-author"><b>Conversación abierta</b> </div>        
+        <div class="audio-buttons">
+            <button class="audio-card-btn" onclick="playAudio('materialadicional1')">&#9654;</button>
+            <audio id="materialadicional1" src="materialadicional1.mp3"></audio>        
         </div>
     </div>
-        <button class="audio-card-btn" onclick="playAudio('audio2')">&#9654;</button>
-        <audio id="audio2" src="audio2.mp3"></audio>
-    </div>
+</div>
+
 
 <div class="audio-card">
-    <img class="audio-cover" src="foto3.jpg" alt="Portada" onclick="showImageModal(this)">
+    <img class="audio-cover" src="foto2materialadicional.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
     <div class="audio-info">
-        <div class="audio-title">Suspensión II</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">01:35</span>
+        <div class="audio-title">Hablando con Sinda</div>
+        <div class="audio-author"><b>Conversación abierta</b> </div>        
+        <div class="audio-buttons">          
+            <button class="audio-card-btn" onclick="playAudio('materialadicional2')">&#9654;</button>
+            <audio id="materialadicional2" src="materialadicional2.mp3"></audio>       
         </div>
     </div>
-    <button class="audio-card-btn" onclick="playAudio('audio3')">&#9654;</button>
-    <audio id="audio3" src="audio3.mp3"></audio>
 </div>
+
 
 <div class="audio-card">
-    <img class="audio-cover" src="foto4.jpg" alt="Portada" onclick="showImageModal(this)">
+    <img class="audio-cover" src="foto3materialadicional.jpg" 
+     alt="Portada" onclick="showImageModal(this)">
     <div class="audio-info">
-        <div class="audio-title">Suspensión III</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">01:15</span>
+        <div class="audio-title">Hablando Lola</div>
+        <div class="audio-author"><b>Conversación abierta</b> </div>      
+        <div class="audio-buttons">            
+            <button class="audio-card-btn" onclick="playAudio('materialadicional3')">&#9654;</button>
+            <audio id="materialadicional3" src="materialadicional3.mp3"></audio>  
         </div>
     </div>
-    <button class="audio-card-btn" onclick="playAudio('audio4')">&#9654;</button>
-    <audio id="audio4" src="audio4.mp3"></audio>
 </div>
-
-<div class="audio-card">
-    <img class="audio-cover" src="foto5.jpg" alt="Portada" onclick="showImageModal(this)">
-    <div class="audio-info">
-        <div class="audio-title">Suspensión IV</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">01:45</span>
-        </div>
-    </div>
-    <button class="audio-card-btn" onclick="playAudio('audio5')">&#9654;</button>
-    <audio id="audio5" src="audio5.mp3"></audio>
-</div>
-
-<div class="audio-card">
-    <img class="audio-cover" src="foto6.jpg" alt="Portada" onclick="showImageModal(this)">
-    <div class="audio-info">
-        <div class="audio-title">Suspensión V</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">01:30</span>
-        </div>
-    </div>
-    <button class="audio-card-btn" onclick="playAudio('audio6')">&#9654;</button>
-    <audio id="audio6" src="audio6.mp3"></audio>
-</div>
-
-<div class="audio-card">
-    <img class="audio-cover" src="foto7.jpg" alt="Portada" onclick="showImageModal(this)">
-    <div class="audio-info">
-        <div class="audio-title">Suspensión VI</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">02:00</span>
-        </div>
-    </div>
-    <button class="audio-card-btn" onclick="playAudio('audio7')">&#9654;</button>
-    <audio id="audio7" src="audio7.mp3"></audio>
-</div>
-
-<div class="audio-card">
-    <img class="audio-cover" src="foto8.jpg" alt="Portada" onclick="showImageModal(this)">
-    <div class="audio-info">
-        <div class="audio-title">Suspensión VII</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">02:15</span>
-        </div>
-    </div>
-    <button class="audio-card-btn" onclick="playAudio('audio8')">&#9654;</button>
-    <audio id="audio8" src="audio8.mp3"></audio>
-</div>
- <div class="audio-card">
-    <img class="audio-cover" src="foto9.jpg" alt="Portada" onclick="showImageModal(this)">
-    <div class="audio-info">
-        <div class="audio-title">Suspensión VIII</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">02:10</span>
-        </div>
-    </div>
-    <button class="audio-card-btn" onclick="playAudio('audio9')">&#9654;</button>
-    <audio id="audio9" src="audio9.mp3"></audio>
-</div>
-
-<div class="audio-card">
-    <img class="audio-cover" src="foto10.jpg" alt="Portada" onclick="showImageModal(this)">
-    <div class="audio-info">
-        <div class="audio-title">Suspensión IX</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">02:05</span>
-        </div>
-    </div>
-    <button class="audio-card-btn" onclick="playAudio('audio10')">&#9654;</button>
-    <audio id="audio10" src="audio10.mp3"></audio>
-</div>
-
-<div class="audio-card">
-    <img class="audio-cover" src="foto11.jpg" alt="Portada" onclick="showImageModal(this)">
-    <div class="audio-info">
-        <div class="audio-title">Suspensión X</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">02:00</span>
-        </div>
-    </div>
-    <button class="audio-card-btn" onclick="playAudio('audio11')">&#9654;</button>
-    <audio id="audio11" src="audio11.mp3"></audio>
-</div>
-
-<div class="audio-card">
-    <img class="audio-cover" src="foto12.jpg" alt="Portada" onclick="showImageModal(this)">
-    <div class="audio-info">
-        <div class="audio-title">Suspensión XI</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">01:50</span>
-        </div>
-    </div>
-    <button class="audio-card-btn" onclick="playAudio('audio12')">&#9654;</button>
-    <audio id="audio12" src="audio12.mp3"></audio>
-</div>
-
-<div class="audio-card">
-    <img class="audio-cover" src="foto13.jpg" alt="Portada" onclick="showImageModal(this)">
-    <div class="audio-info">
-        <div class="audio-title">Suspensión XII</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">01:40</span>
-        </div>
-    </div>
-    <button class="audio-card-btn" onclick="playAudio('audio13')">&#9654;</button>
-    <audio id="audio13" src="audio13.mp3"></audio>
-</div>
-
-<div class="audio-card">
-    <img class="audio-cover" src="foto14.jpg" alt="Portada" onclick="showImageModal(this)">
-    <div class="audio-info">
-        <div class="audio-title">Suspensión XIII</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">01:45</span>
-        </div>
-    </div>
-    <button class="audio-card-btn" onclick="playAudio('audio14')">&#9654;</button>
-    <audio id="audio14" src="audio14.mp3"></audio>
-</div>
-
-<div class="audio-card">
-    <img class="audio-cover" src="foto15.jpg" alt="Portada" onclick="showImageModal(this)">
-    <div class="audio-info">
-        <div class="audio-title">Suspensión XIV</div>
-        <div class="audio-author">Adrián Balseca</div>
-        <div class="audio-meta">
-            <span class="audio-icon">&#127911;</span>
-            <span class="audio-duration">02:00</span>
-        </div>
-    </div>
-    <button class="audio-card-btn" onclick="playAudio('audio15')">&#9654;</button>
-    <audio id="audio15" src="audio15.mp3"></audio>
-</div>
+        
 
 
 </div>
-<!-- Modal de imagen -->
+
+
+            </div>
+        </div>
+        <!-- Modal de imagen -->
 <div id="img-modal" class="img-modal" onclick="closeImageModal()">
     <img id="img-modal-content" src="" alt="Portada grande">
 </div>
-
-            </div>
-        </div>
     </div>
     <script>
+
+        function showImageModal(img) {
+    var modal = document.getElementById("img-modal");
+    var modalImg = document.getElementById("img-modal-content");
+    modalImg.src = img.src.replace('w=65', 'w=1200'); // Si tienes imagen grande, mejor usa un src diferente.
+    modal.classList.add("show");
+}
+function closeImageModal() {
+    document.getElementById("img-modal").classList.remove("show");
+}
+
         // Acordeón expandible
         document.querySelectorAll('.expandable-btn').forEach(function(btn){
             btn.addEventListener('click', function(){
